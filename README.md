@@ -8,6 +8,14 @@ help you grok your reading list.
 
 ## Usage
 
+Start by creating a virtualenv and install the necessary dependencies:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install --requirement requirements.txt
+```
+
 Authentication with Pocket's API is unfortunately difficult for a CLI script
 because you must go through the web OAuth flow. Start by getting an access
 token (you'll have to create a Pocket app to get a consumer key):
