@@ -48,6 +48,8 @@ class PocketStats(object):
             'is_article': 0,
             'add_dates': [],
             'tags': {},
+            'tagged': 0,
+            'untagged': 0,
         }
 
         for item in self.get_all_items():
@@ -68,8 +70,11 @@ class PocketStats(object):
                 stats['is_article'] += 1
 
             if 'tags' in item:
+                stats['tagged'] += 1
                 for tag in item['tags']:
                     stats['tags'][tag] = stats['tags'].get(tag, 0) + 1
+            else:
+                stats['untagged'] += 1
 
             stats['add_dates'].append(
                     datetime.fromtimestamp(int(item['time_added'])))
@@ -81,6 +86,8 @@ class PocketStats(object):
         print("Has image: {}".format(stats['has_image']))
         print("Has video: {}".format(stats['has_video']))
         print("Article: {}".format(stats['is_article']))
+        print("Tagged: {}".format(stats['tagged']))
+        print("Untagged: {}".format(stats['untagged']))
         print("Tags:")
 
         for (tag, count) in sorted(
