@@ -53,7 +53,6 @@ class PocketStats(object):
         }
 
         for item in self.get_all_items():
-            from pprint import pprint
             stats['total'] += 1
             stats['total_words'] += int(item['word_count'])
 
